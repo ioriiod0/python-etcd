@@ -39,9 +39,9 @@ class EtcdResult(object):
             self._children = node['nodes']
 
         if prevNode:
-            self._prev_node = EtcdResult(None, node=prevNode)
+            self.prevNode = EtcdResult(None, node=prevNode)
             # See issue 38: when returning a write() op etcd has a bogus result.
-            if self._prev_node.dir and not self.dir:
+            if self.prevNode.dir and not self.dir:
                 self.dir = True
 
     def parse_headers(self, response):
